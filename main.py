@@ -32,7 +32,7 @@ PORT = int(os.getenv("PORT", 8000))
 app = FastAPI(title="Free AI Telecaller MVP")
 
 # Initialize Groq (FREE!)
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "your-groq-api-key-here")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 # In-memory storage for MVP (no database needed!)
@@ -698,4 +698,5 @@ if __name__ == "__main__":
     
     if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=PORT)
