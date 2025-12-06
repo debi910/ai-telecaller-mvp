@@ -1,30 +1,14 @@
 """
 100% FREE AI Telecaller MVP
 No costs - perfect for testing!
-
-What's included:
-✓ Web chat interface (no phone calls needed)
-✓ Multi-language AI (Hindi/English/Odia)
-✓ Google Sheets integration
-✓ Groq AI (free)
-✓ Simulated WhatsApp notifications
-
-Setup:
-1. pip install fastapi uvicorn groq google-api-python-client
-2. Get free Groq API key from groq.com
-3. Setup Google Sheets API (5 min)
-4. python this_file.py
-5. Open http://localhost:8000
 """
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
 from groq import Groq
 import json
 from datetime import datetime
 import os
-
 
 # Get port from environment (Railway provides this)
 PORT = int(os.getenv("PORT", 8000))
@@ -32,7 +16,7 @@ PORT = int(os.getenv("PORT", 8000))
 app = FastAPI(title="Free AI Telecaller MVP")
 
 # Initialize Groq (FREE!)
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "your-api-key-here")
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 # In-memory storage for MVP (no database needed!)
@@ -241,9 +225,6 @@ Thank you!
     def save_to_sheets_simulation(self, data):
         """Simulate saving to Google Sheets"""
         
-        # In real implementation, this would save to actual Google Sheets
-        # For MVP, we just store in memory and print
-        
         all_leads.append({
             'timestamp': datetime.now().isoformat(),
             **data
@@ -448,16 +429,6 @@ async def home():
             background: rgba(102, 126, 234, 0.1);
             color: #667eea;
             font-size: 0.9em;
-            font-weight: bold;
-        }
-        
-        .completion-notice {
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            text-align: center;
             font-weight: bold;
         }
     </style>
@@ -676,6 +647,7 @@ async def get_stats():
     
     return stats
 
+# This is the only if __name__ block - removed duplicate!
 if __name__ == "__main__":
     import uvicorn
     
@@ -696,7 +668,4 @@ if __name__ == "__main__":
     ╚══════════════════════════════════════════════════════════╝
     """)
     
-    if __name__ == "__main__":
-    import uvicorn
-
     uvicorn.run(app, host="0.0.0.0", port=PORT)
