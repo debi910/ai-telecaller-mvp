@@ -1,6 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-groq==0.9.0
+groq>=0.13.0  # Or simply 'groq' to get the latest version
 python-multipart==0.0.6
+
 
 
